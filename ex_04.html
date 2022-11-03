@@ -25,17 +25,33 @@
 
 <script>
 
-    lista_filmes_favoritos = []
+    var lista_filmes_favoritos = []
 
     function cadastrar_filme() {
-        const filme_favorito = input_filme.value
-        lista_filmes_favoritos.push(filme_favorito)
+        // const filme_favorito = input_filme.value
+        // lista_filmes_favoritos.push(filme_favorito)
 
-        if ((lista_filmes_favoritos.length - 1) % 2) {
-            div_filmes_favoritos.innerHTML += `<span style= "color:red;">${filme_favorito}</span><br>`
+        // if ((lista_filmes_favoritos.length - 1) % 2) {
+        //     div_filmes_favoritos.innerHTML += `<span style= "color:red;">${filme_favorito}</span><br>`
+        // }
+        // else {
+        //     div_filmes_favoritos.innerHTML += `<span style= "color:blue;">${filme_favorito}</span><br>`
+        // }
+
+        const filme_favorito = input_filme.value;
+        lista_filmes_favoritos.push(filme_favorito);
+
+        div_filmes_favoritos.innerHTML = "";
+
+        for(var contador = 0; contador < lista_filmes_favoritos.length; contador++)
+        {
+            var cor = "red"
+            if (contador % 2 == 0) {
+                cor = "blue"
+            }
+
+            div_filmes_favoritos.innerHTML += `<span style= "color:${cor};">${lista_filmes_favoritos[contador]}</span><br>`
         }
-        else {
-            div_filmes_favoritos.innerHTML += `<span style= "color:blue;">${filme_favorito}</span><br>`
-        }
+
     }
 </script>

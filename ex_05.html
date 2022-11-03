@@ -16,18 +16,34 @@
     <input id="input_aluno">
     <br><br>
     <button onclick="cadastrar_aluno()">Cadastrar aluno</button>
+    <br><br>
     <div id="div_aluno"></div>
 </body>
 </html>
 
 <script>
 
-    lista_alunos = []
+    var lista_alunos = [];
 
     function cadastrar_aluno(){
-        const nome_aluno = input_aluno.value
-        lista_alunos.push(nome_aluno)
+        const nome_aluno = input_aluno.value;
+        var contador = 0;
 
+        lista_alunos.push(nome_aluno);
+
+        // while(++contador <= lista_alunos.length)
+        // {
+        //     div_aluno.innerHTML += `${lista_alunos[lista_alunos.length - contador]} <br>`
+            
+        // }
+
+        // div_aluno.innerHTML += `<br>`
+        div_aluno.innerHTML = "";
+
+        for(var contador = lista_alunos.length; contador > 0; contador--)
+        {
+            div_aluno.innerHTML += `${lista_alunos[contador - 1]} <br>`;
+        }
 
     }
 </script>

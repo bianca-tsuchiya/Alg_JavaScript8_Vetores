@@ -18,7 +18,7 @@
     <input id="input_local_viagem">
     <br><br>
     <button onclick="cadastrar_local()">Cadastrar local</button>
-    <br><br>
+    <br><br><br>
     <label for="">Digite um número, indicando o local para onde viajou:</label>
     <br><br>
     <input type="number" id="input_num_local">
@@ -31,23 +31,21 @@
 </html>
 <script>
 
-    var lista_local_viagem = []
-    lista_local_viagem.push("")
+    var lista_local_viagem = [];
 
     function cadastrar_local() {
-        const local_viagem = input_local_viagem.value
-        lista_local_viagem.push(local_viagem)
+        const local_viagem = input_local_viagem.value;
+        lista_local_viagem.push(local_viagem);
     }
 
     function relembrar_viagem() {
         const num_local = Number(input_num_local.value);
 
-        if (num_local < lista_local_viagem.length) {
-            div_resultado.innerHTML = lista_local_viagem[num_local]
+        if (num_local <= lista_local_viagem.length) {
+            div_resultado.innerHTML = lista_local_viagem[num_local - 1];
         }
         else {
-            div_resultado.innerHTML = `Você não fez uma ${num_local}ª viagem!`
+            div_resultado.innerHTML = `Você não fez uma ${num_local}ª viagem!`;
         }
-
     }
 </script>

@@ -23,13 +23,23 @@
 
 </html>
 <script>
-    lista_filmes_favoritos = []
+    var lista_filmes_favoritos = [];
 
     function cadastrar_filme() {
-        const filme_favorito = input_filme.value
-        lista_filmes_favoritos.push(filme_favorito)
+        // const filme_favorito = input_filme.value
+        // lista_filmes_favoritos.push(filme_favorito)
 
-        div_filmes_favoritos.innerHTML += `${lista_filmes_favoritos[lista_filmes_favoritos.length - 1]}<br>`
+        // div_filmes_favoritos.innerHTML += `${lista_filmes_favoritos[lista_filmes_favoritos.length - 1]}<br>`
+
+        const filme_favorito = input_filme.value;
+        lista_filmes_favoritos.push(filme_favorito);
+
+        div_filmes_favoritos.innerHTML = "";
+
+        for(var contador = 0; contador < lista_filmes_favoritos.length; contador++)
+        {
+            div_filmes_favoritos.innerHTML += `${lista_filmes_favoritos[contador]}<br>`;
+        }
 
 
     }
