@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade Algoritmos</title>
 </head>
+
 <body>
-     <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
-     <h3>Exercício 02</h3>
-     <h6>Bianca Namie Hara Tsuchiya - Data: 02/11/2022</h6>
-     <br>
-     <label for="input_local_viagem">Digite um lugar para o qual você já viajou:</label>
-     <br><br>
-     <input id="input_local_viagem">
-     <br><br>
-     <button onclick="cadastrar_local()">Cadastrar local</button>
-     <br><br>
-     <label for="">Digite um número, indicando o local para onde viajou:</label>
-     <br><br>
-     <input type="number" id="input_num_local">
-     <br><br>
-     <button onclick="relembrar_viagem()">Relembrar viagem</button>
-     <br><br>
-     <div id="div_resultado"></div>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 02</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 02/11/2022</h6>
+    <br>
+    <label for="input_local_viagem">Digite um lugar para o qual você já viajou:</label>
+    <br><br>
+    <input id="input_local_viagem">
+    <br><br>
+    <button onclick="cadastrar_local()">Cadastrar local</button>
+    <br><br>
+    <label for="">Digite um número, indicando o local para onde viajou:</label>
+    <br><br>
+    <input type="number" id="input_num_local">
+    <br><br>
+    <button onclick="relembrar_viagem()">Relembrar viagem</button>
+    <br><br>
+    <div id="div_resultado"></div>
 </body>
+
 </html>
 <script>
 
     var lista_local_viagem = []
     lista_local_viagem.push("")
 
-    function cadastrar_local(){
+    function cadastrar_local() {
         const local_viagem = input_local_viagem.value
         lista_local_viagem.push(local_viagem)
     }
 
-    function relembrar_viagem(){
+    function relembrar_viagem() {
         const num_local = Number(input_num_local.value);
 
-        if(num_local < lista_local_viagem.length ){
+        if (num_local < lista_local_viagem.length) {
             div_resultado.innerHTML = lista_local_viagem[num_local]
         }
-        else{
+        else {
             div_resultado.innerHTML = `Você não fez uma ${num_local}ª viagem!`
         }
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 06</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 02/11/2022</h6>
+    <br>
+    <label for="input_aluno">Digite o nome de um aluno para cadastrar ou consultar:</label>
+    <input id="input_aluno">
+    <br><br>
+    <button onclick="cadastrar_aluno()">Cadastrar novo aluno</button>
+    <div id="div_alunos"></div>
+</body>
+
+</html>
+
+<script>
+
+    lista_alunos = [];
+
+    function cadastrar_aluno() {
+        const nome_aluno = input_aluno.value
+        if (lista_alunos.length == 0) {
+            lista_alunos.push(nome_aluno)
+            div_alunos.innerHTML += `${nome_aluno} <br>`
+        }
+        else {
+            for (var contador = 0; contador < lista_alunos.length; contador++) {
+                if (lista_alunos[contador] == nome_aluno) {
+                    alert(`O aluno ${nome_aluno} já existe na lista`)
+                }
+                else {
+                    lista_alunos.push(nome_aluno)
+                    div_alunos.innerHTML += `${nome_aluno} <br>`
+                }
+            }
+        }
+    }
+
+</script>

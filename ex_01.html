@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Atividade Algoritmos</title>
 </head>
+
 <body>
      <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
      <h3>Exercício 01</h3>
@@ -22,23 +24,23 @@
      <br><br>
      Total de filmes cadastrados: <span id="span_total_filmes"></span>
 </body>
+
 </html>
 
 <script>
 
      var lista_filmes = []
 
-     function cadastrar_filme(){
+     function cadastrar_filme() {
           var filme = input_filme.value
           lista_filmes.push(filme)
 
-          for(var contador = 0; contador < lista_filmes.length; contador++)
-          {
+          for (var contador = 0; contador < lista_filmes.length; contador++) {
                var terceiro_filme = ""
-               if(lista_filmes.length>3){
+               if (lista_filmes.length > 3) {
                     terceiro_filme = lista_filmes[2]
                }
-               else{
+               else {
                     terceiro_filme = "Ainda não existe"
                }
 

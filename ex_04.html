@@ -10,7 +10,7 @@
 
 <body>
     <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
-    <h3>Exercício 03</h3>
+    <h3>Exercício 04</h3>
     <h6>Bianca Namie Hara Tsuchiya - Data: 02/11/2022</h6>
     <br>
     <label for="input_filme">Digite os filmes que mais gosta:</label>
@@ -22,15 +22,20 @@
 </body>
 
 </html>
+
 <script>
+
     lista_filmes_favoritos = []
 
     function cadastrar_filme() {
         const filme_favorito = input_filme.value
         lista_filmes_favoritos.push(filme_favorito)
 
-        div_filmes_favoritos.innerHTML += `${lista_filmes_favoritos[lista_filmes_favoritos.length - 1]}<br>`
-
-
+        if ((lista_filmes_favoritos.length - 1) % 2) {
+            div_filmes_favoritos.innerHTML += `<span style= "color:red;">${filme_favorito}</span><br>`
+        }
+        else {
+            div_filmes_favoritos.innerHTML += `<span style= "color:blue;">${filme_favorito}</span><br>`
+        }
     }
 </script>
