@@ -18,6 +18,7 @@
     <br><br>
     <button onclick="cadastrar_aluno()">Cadastrar novo aluno</button>
     <button onclick="pesquisar_aluno()">Pesquisar aluno</button>
+    <br><br>
     <div id="div_alunos"></div>
 </body>
 
@@ -25,16 +26,20 @@
 
 <script>
 
-    lista_alunos = [];
+    var lista_alunos = [];
 
     function pesquisar_aluno(){
         
         const nome_aluno = input_aluno.value;
-
+        var aluno_existente = false;
 
         for (var contador = 0; contador < lista_alunos.length; contador++) {
                 if (nome_aluno == lista_alunos[contador]) {
                     aluno_existente = true;
+                }
+
+                if(aluno_existente == true)
+                {
                     alert(`O aluno ${nome_aluno} já existe na lista.`)
                 }
             }
@@ -44,7 +49,11 @@
     function cadastrar_aluno() {
         const nome_aluno = input_aluno.value;
 
-        if (lista_alunos.length == 0) {
+        if(nome_aluno == "")
+        {
+            alert("ERRO! Insira um nome válido para cadastrar.")
+        }
+        else if (lista_alunos.length == 0) {
             lista_alunos.push(nome_aluno);
             div_alunos.innerHTML = `${nome_aluno}<br>`
         }

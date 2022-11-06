@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 08</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_nota">Digite a nota do aluno:</label>
+    <input type="number" id="input_nota">
+    <br><br>
+    <button onclick="cadastrar_nota()">Cadastrar Nota</button>
+    <br><br>
+    <p>Digite o intervalo de notas que deseja analisar:</p>
+    <input type="number" id="input_nota1_intervalo">
+    <input type="number" id="input_nota2_intervalo">
+    <br><br>
+    <button onclick="mostrar_intervalo_notas()">Rever as notas</button>
+    <br><br>
+    <div id="div_resultado_analise_notas"></div>
+</body>
+
+<script>
+
+    lista_notas_alunos = [];
+
+    function cadastrar_nota(){
+        const nota = Number(input_nota.value);
+        lista_notas_alunos.push(nota);
+    }
+
+    function mostrar_intervalo_notas(){
+        const nota1_intervalo = Number(input_nota1_intervalo.value);
+        const nota2_intervalo = Number(input_nota2_intervalo.value);
+        var contador_notas_validas_intervalo = 0;
+        var soma_notas_validas_intervalo = 0;
+
+        for(var contador = 0; contador < lista_notas_alunos.length; contador++){
+            if(lista_notas_alunos[contador] >= nota1_intervalo && lista_notas_alunos[contador] <= nota2_intervalo)
+            {
+                contador_notas_validas_intervalo += 1;
+                soma_notas_validas_intervalo += lista_notas_alunos[contador];
+                div_resultado_analise_notas.innerHTML += `${lista_notas_alunos[contador]}<br>`
+            }
+        }
+
+        div_resultado_analise_notas.innerHTML += `<br>Foram cadastradas ${contador_notas_validas_intervalo} notas que estão no intervalo de ${nota1_intervalo} até ${nota2_intervalo} e a média dessas notas é ${(soma_notas_validas_intervalo/contador_notas_validas_intervalo).toFixed(1)}`
+    }
+</script>
+
+</html>
