@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 13</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_produto">Digite o nome do produto:</label>
+    <input id="input_produto">
+    <br><br>
+    <label for="input_preco_produto">Digite o preço do produto:</label>
+    <input type="number" id="input_preco_produto">
+    <br><br>
+    <button onclick="cadastrar_produto()">Cadastrar</button>
+    <button onclick="mostrar_relatorio_estoque()">Relatório de estoque</button>
+    <br><br>
+    <i><div id="div_relatorio_estoque"></div></i>
+</body>
+
+</html>
+
+<script>
+
+    var lista_produtos = [];
+    var lista_preco_produtos = [];
+
+    function cadastrar_produto() {
+        const produto = input_produto.value;
+        const preco_produto = Number(input_preco_produto.value);
+
+        if (produto != "" && preco_produto != "") {
+            lista_produtos.push(produto);
+            lista_preco_produtos.push(preco_produto);
+        }
+        else {
+            alert("ERRO! Digite o nome do produto e o seu preço para cadastrá-lo.");
+        }
+    }
+
+    function mostrar_relatorio_estoque() {
+
+        div_relatorio_estoque.innerHTML = "";
+        var total_produtos = lista_produtos.length;
+
+        div_relatorio_estoque.innerHTML = `
+            Total de produtos: ${total_produtos}
+            <br>
+        `
+
+        var produto_mais_caro = lista_preco_produtos[0];
+        var produto_mais_barato = lista_preco_produtos[0];
+        var soma_precos = 0;
+
+        for (var contador = 0; contador < lista_produtos.length; contador++) {
+            var acrescimo = lista_preco_produtos[contador] * 0.25;
+            var valor_compra = lista_preco_produtos[contador] + acrescimo;
+
+            soma_precos += valor_compra;
+
+            div_relatorio_estoque.innerHTML +=
+                `
+                <br>
+                Produto ${contador + 1}: ${lista_produtos[contador]}
+                <br>
+                Preço de compra: R$${(lista_preco_produtos[contador]).toFixed(2)}. Vender por R$${valor_compra.toFixed(2)}
+                <br>
+            `
+
+            if (lista_preco_produtos[contador] > produto_mais_caro) {
+                produto_mais_caro = lista_preco_produtos[contador];
+
+            }
+
+            if (lista_preco_produtos[contador] < produto_mais_barato) {
+                produto_mais_barato = lista_preco_produtos[contador];
+            }
+        }
+
+        div_relatorio_estoque.innerHTML += `
+            <br>
+            Produto mais caro: R$${produto_mais_caro.toFixed(2)}
+            <br>
+            Produto mais barato: R$${produto_mais_barato.toFixed(2)}
+            <br>
+            Preço total de compra dos produtos: R$${soma_precos.toFixed(2)}
+            <br>
+            Média de preço de venda dos produtos: R$${(soma_precos / lista_produtos.length).toFixed(2)}
+            <br>
+        `
+    }
+</script>
