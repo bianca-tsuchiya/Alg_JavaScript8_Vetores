@@ -38,10 +38,16 @@
 
     function cadastrar_valores(){
         const dia_deposito = Number(input_dia_deposito.value);
-        lista_dias_deposito.push(dia_deposito);
-
         const valor_deposito = Number(input_valor_deposito.value);
-        lista_depositos.push(valor_deposito);
+        
+        if(dia_deposito != "" && valor_deposito != ""){
+            lista_dias_deposito.push(dia_deposito);
+            lista_depositos.push(valor_deposito);
+        } 
+        else{
+            alert("ERRO! Digite o dia em que o depósito foi realizado e o valor do depósito para cadastrar no sistema.")
+        }
+
     }
 
     function mostrar_depositos(){
