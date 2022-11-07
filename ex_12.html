@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 12</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_ra">Digite o RA do aluno:</label>
+    <input type="number" id="input_ra">
+    <br><br>
+    <label for="input_nota">Digite a nota do aluno:</label>
+    <input type="number" id="input_nota">
+    <br><br>
+    <button onclick="cadastrar_dados_alunos()">Guardar</button>
+    <br><br><br>
+    <label for="">Digite P para <b>par</b> ou I para <b>ímpar</b>:</label>
+    <input id="input_par_ou_impar">
+    <br><br>
+    <button onclick="mostrar_notas()">Analisar</button>
+    <br><br>
+    <div id="div_resultado_alunos"></div>
+</body>
+
+</html>
+
+<script>
+
+    lista_ra_alunos = [];
+    lista_notas_alunos = [];
+
+    function cadastrar_dados_alunos() {
+        const ra_aluno = Number(input_ra.value);
+        const nota_aluno = Number(input_nota.value);
+
+        if (ra_aluno != "" && nota_aluno != "") {
+            lista_ra_alunos.push(ra_aluno);
+            lista_notas_alunos.push(nota_aluno);
+        }
+        else {
+            alert("ERRO! Preencha o RA do aluno e a nota do aluno para cadastrar no sistema.");
+        }
+    }
+
+    function mostrar_notas() {
+        const par_ou_impar = input_par_ou_impar.value;
+
+        if (par_ou_impar != "P" && par_ou_impar != "p" && par_ou_impar != "I" && par_ou_impar != "i") {
+            alert("Valor inválido, entre com P ou I.");
+        }
+        else if (par_ou_impar == "P" || par_ou_impar == "p") {
+
+            var qtd_notas_par = 0;
+            var soma_notas_par = 0;
+
+            var qtd_notas_par_acima_media = 0;
+            var soma_notas_par_acima_media = 0;
+
+            div_resultado_alunos.innerHTML = "";
+            for (var contador = 0; contador < lista_ra_alunos.length; contador++) {
+                if (lista_ra_alunos[contador] % 2 == 0) {
+                    qtd_notas_par += 1;
+                    soma_notas_par += lista_notas_alunos[contador];
+
+                    if ((soma_notas_par / qtd_notas_par) < lista_notas_alunos[contador]) {
+                        qtd_notas_par_acima_media += 1;
+                        soma_notas_par_acima_media += lista_notas_alunos[contador];
+
+                        div_resultado_alunos.innerHTML += `
+                        Aluno com RA = ${lista_ra_alunos[contador]} e nota ${(lista_notas_alunos[contador]).toFixed(1)} foi selecionado pois a média é ${(soma_notas_par / qtd_notas_par).toFixed(1)}
+                        <br>
+                    `;
+                    }
+                }
+            }
+
+            div_resultado_alunos.innerHTML += `
+                <br>    
+                Quantidade de notas acima da média: ${qtd_notas_par_acima_media} 
+                <br>
+                Nova média (notas acima da média): ${(soma_notas_par_acima_media / qtd_notas_par_acima_media).toFixed(1)}
+            `;
+
+        }
+        else {
+            var qtd_notas_impar = 0;
+            var soma_notas_impar = 0;
+
+            var qtd_notas_impar_acima_media = 0;
+            var soma_notas_impar_acima_media = 0;
+
+            div_resultado_alunos.innerHTML = "";
+            for (var contador = 0; contador < lista_ra_alunos.length; contador++) {
+                if (lista_ra_alunos[contador] % 2 != 0) {
+                    qtd_notas_impar += 1;
+                    soma_notas_impar += lista_notas_alunos[contador];
+                }
+
+                if ((soma_notas_impar / qtd_notas_impar) < lista_notas_alunos[contador]) {
+                    qtd_notas_impar_acima_media += 1;
+                    soma_notas_impar_acima_media += lista_notas_alunos[contador];
+
+                    div_resultado_alunos.innerHTML += `
+                        Aluno com RA = ${lista_ra_alunos[contador]} e nota ${(lista_notas_alunos[contador]).toFixed(1)} foi selecionado pois a média é ${(soma_notas_impar / qtd_notas_impar).toFixed(1)}
+                        <br>
+                    `;
+                }
+            }
+
+            div_resultado_alunos.innerHTML += `
+                <br>
+                Quantidade de notas acima da média: ${qtd_notas_impar_acima_media} 
+                <br>
+                Nova média (notas acima da média): ${(soma_notas_impar_acima_media / qtd_notas_impar_acima_media).toFixed(1)}
+            `;
+        }
+    }
+</script>
