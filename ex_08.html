@@ -27,9 +27,11 @@
     <div id="div_resultado_analise_notas"></div>
 </body>
 
+</html>
+
 <script>
 
-    lista_notas_alunos = [];
+    var lista_notas_alunos = [];
 
     function cadastrar_nota(){
         const nota = Number(input_nota.value);
@@ -47,12 +49,10 @@
             {
                 contador_notas_validas_intervalo += 1;
                 soma_notas_validas_intervalo += lista_notas_alunos[contador];
-                div_resultado_analise_notas.innerHTML += `${lista_notas_alunos[contador]}<br>`
+                div_resultado_analise_notas.innerHTML += `${lista_notas_alunos[contador]}<br>`;
             }
         }
 
-        div_resultado_analise_notas.innerHTML += `<br>Foram cadastradas ${contador_notas_validas_intervalo} notas que estão no intervalo de ${nota1_intervalo} até ${nota2_intervalo} e a média dessas notas é ${(soma_notas_validas_intervalo/contador_notas_validas_intervalo).toFixed(1)}`
+        div_resultado_analise_notas.innerHTML += `<br>Foram cadastradas ${contador_notas_validas_intervalo} notas que estão no intervalo de ${nota1_intervalo} até ${nota2_intervalo} e a média dessas notas é ${(soma_notas_validas_intervalo/contador_notas_validas_intervalo).toFixed(1)}`;
     }
 </script>
-
-</html>
