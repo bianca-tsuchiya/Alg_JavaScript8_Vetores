@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 09</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_numero">Digite um número qualquer:</label>
+    <input type="number" id="input_numero">
+    <br><br>
+    <button onclick="mostrar_historico()">Analisar histórico</button>
+    <br><br>
+    <div id="div_historico"></div>
+</body>
+
+</html>
+
+<script>
+    var lista_numeros = [];
+    function mostrar_historico(){
+        const numero = Number(input_numero.value);
+        lista_numeros.push(numero);
+
+        var maior_numero = lista_numeros[0];
+        var menor_numero = lista_numeros[0];
+
+        div_historico.innerHTML = "";
+        for(var contador = 0; contador < lista_numeros.length; contador++){
+            div_historico.innerHTML += `
+                ${contador + 1}º Número: ${lista_numeros[contador]}<br>
+            `
+
+            if(lista_numeros[contador] > maior_numero)
+            {
+                maior_numero = lista_numeros[contador];
+            }
+
+            if(lista_numeros[contador] < menor_numero)
+            {
+                menor_numero = lista_numeros[contador];
+            }
+        }
+
+        div_historico.innerHTML += `
+            <br>
+            Maior: ${maior_numero}<br>
+            Menor: ${menor_numero}
+        `
+    }
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 11</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_dia_deposito">Digite o dia que deseja fazer o depósito:</label>
+    <input type="number" id="input_dia_deposito">
+    <br><br>
+    <label for="input_valor_deposito">Digite o valor depositado:</label>
+    <input type="number" id="input_valor_deposito">
+    <br><br>
+    <button onclick="cadastrar_valores()">Guardar</button>
+    <br><br>
+    <p>Digite o intervalo de dias que deseja analisar:</p>
+    <input type="number" id="input_dia1_intervalo">
+    <input type="number" id="input_dia2_intervalo">
+    <br><br>
+    <button onclick="mostrar_depositos()">Rever Depósitos</button>
+    <br><br>
+    <div id="div_historico_depositos"></div>
+</body>
+
+</html>
+
+<script>
+
+    var lista_dias_deposito = [];
+    var lista_depositos = [];
+
+    function cadastrar_valores(){
+        const dia_deposito = Number(input_dia_deposito.value);
+        lista_dias_deposito.push(dia_deposito);
+
+        const valor_deposito = Number(input_valor_deposito.value);
+        lista_depositos.push(valor_deposito);
+    }
+
+    function mostrar_depositos(){
+        const dia1_intervalo = Number(input_dia1_intervalo.value);
+        const dia2_intervalo = Number(input_dia2_intervalo.value);
+
+        var contador = 0;
+        var soma = 0;
+
+        div_historico_depositos.innerHTML = "";
+        for(var posicao = 0; posicao < lista_dias_deposito.length; posicao++)
+        {
+            if(lista_dias_deposito[posicao] >= dia1_intervalo && lista_dias_deposito[posicao] <= dia2_intervalo){
+
+                var cor = "lightblue";
+                if(contador % 2 == 0){
+                    div_historico_depositos.innerHTML += `
+                        <span style = "background-color: ${cor}">
+                            dia = ${lista_dias_deposito[posicao]} - Valor depositado = R$${(lista_depositos[posicao]).toFixed(2)}
+                        </span>
+                        <br>
+                    `;
+                }
+                else{
+                    cor = "lightgreen";
+                    div_historico_depositos.innerHTML += `
+                        <span style = "background-color: ${cor}">
+                            dia = ${lista_dias_deposito[posicao]} - Valor depositado = R$${(lista_depositos[posicao]).toFixed(2)}
+                        </span>
+                        <br>
+                    `;
+
+                }
+
+                soma += lista_depositos[contador];
+                contador += 1;
+
+            }
+        }
+
+        div_historico_depositos.innerHTML += `
+            <br>
+            Quantidade de dias selecionados: <b>${contador}</b>
+            <br>
+            Valor total dos depósitos realizados entre os dias ${dia1_intervalo} e ${dia2_intervalo}: <b>R$${soma.toFixed(2)}</b>
+            <br>
+            Média do valor dos depósitos realizados entre os dias ${dia1_intervalo} e ${dia2_intervalo}: <b>R$${(soma / contador).toFixed(2)}</b>
+            
+        `
+    }
+</script>

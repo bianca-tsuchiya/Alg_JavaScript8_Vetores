@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Algoritmos</title>
+</head>
+
+<body>
+    <h1>Atividade: JavaScript - Estrutura de Vetores</h1>
+    <h3>Exercício 09</h3>
+    <h6>Bianca Namie Hara Tsuchiya - Data: 05/11/2022</h6>
+    <br>
+    <label for="input_onibus">Digite o nome da linha de ônibus que você acabou de pegar:</label>
+    <input id="input_onibus">
+    <br><br>
+    <button onclick="registrar_onibus()">Gravar busão</button>
+    <br><br>
+    <div id="div_lista_onibus"></div>
+    <div id="div_resultado_onibus_pego"></div>
+    <br><br>
+    <label for="input_onibus_pego">Digite a linha de um ônibus que você já tenha pego:</label>
+    <input id="input_onibus_pego">
+    <br><br>
+    <button onclick="verificar_linha()">Pesquisar</button>
+</body>
+
+</html>
+
+<script>
+
+    var lista_onibus = [];
+
+    function registrar_onibus(){
+        const linha_onibus = input_onibus.value;
+        lista_onibus.push(linha_onibus);
+
+        div_lista_onibus.innerHTML = "";
+        for(var contador = 0; contador < lista_onibus.length; contador++)
+        {
+            div_lista_onibus.innerHTML += `${lista_onibus[contador]}<br>`
+        }
+    }
+
+    function verificar_linha(){
+        const onibus_pego = input_onibus_pego.value;
+        var pegou_o_onibus = false;
+        var contador_onibus_pego = 0;
+        var lista_ordem_onibus_pego = [];
+
+        for(var contador = 0; contador < lista_onibus.length; contador++){
+            if(onibus_pego == lista_onibus[contador])
+            {
+                pegou_o_onibus = true;
+                contador_onibus_pego += 1;
+                lista_ordem_onibus_pego.push(contador);
+            }
+        }
+
+        div_resultado_onibus_pego.innerHTML = "";
+        if(pegou_o_onibus == true)
+        {
+            div_resultado_onibus_pego.innerHTML += `<br>Você já pegou essa linha ${contador_onibus_pego} vezes, nessa ordem: `;
+
+            for(var posicao = 0; posicao < lista_ordem_onibus_pego.length; posicao++)
+            {
+                if(posicao == lista_ordem_onibus_pego.length - 1)
+                {
+                    div_resultado_onibus_pego.innerHTML += `${lista_ordem_onibus_pego[posicao] + 1}. `;
+                }
+                else{
+                    div_resultado_onibus_pego.innerHTML += `${lista_ordem_onibus_pego[posicao] + 1}, `;
+                }
+            }
+        }
+        else{
+            div_resultado_onibus_pego.innerHTML += `<br>Você nunca pegou essa linha.`
+        }
+    }
+</script>
